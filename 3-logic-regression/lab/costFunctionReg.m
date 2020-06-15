@@ -42,14 +42,14 @@ for i=1:n
     z = theta' * X(j,:)';
     
     sumG += (sigmoid(z) - y(j)) * X(j,i);
-    if (i>1)
-      sumG += (lambda / m) *  theta(i);
-    endif
   endfor
   
   grad(i) = (1 / m) * sumG;
-endfor
 
+  if (i>1)
+    grad(i) += (lambda / m) *  theta(i);
+  endif
+endfor
 
 % =============================================================
 
